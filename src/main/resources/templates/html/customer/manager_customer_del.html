@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理界面</title>
+
+    <style type="text/css" rel="stylesheet">
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        .breadcrumbs {
+            background: #79aec8;
+            padding: 10px 40px;
+            border: none;
+            font-size: 16px;
+            color: #c4dce8;
+            text-align: left;
+            overflow: hidden;
+            width: 11%;
+            height: 85%;
+            float: left;
+        }
+        a:link, a:visited {
+            color: #447e9b;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a {
+            color: #fff;
+        }
+
+        li{
+            margin-top: 7px;
+            color: white;
+        }
+
+
+
+    </style>
+    <style type="text/css" rel="stylesheet">
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+            color: #333;
+            background: #fff;
+
+        }
+        h1 {
+            margin: 0 0 20px;
+            font-weight: 300;
+            font-size: 20px;
+            color: #666;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-color: #ccc;
+        }
+        caption{
+            text-align: left;
+        }
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+        th {
+            font-weight: 600;
+            text-align: left;
+        }
+        td, th {
+            font-size: 13px;
+            line-height: 16px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+            padding: 8px;
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            text-align: left;
+        }
+        a:link, a:visited {
+            color: #447e9b;
+            text-decoration: none;
+        }
+        #content {
+            position: relative;
+            padding: 20px 40px;
+            width: 75%;
+            height: auto;
+            float: right;
+        }
+        .module table {
+            border-collapse: collapse;
+        }
+        .module table th{
+            width: 388px;
+        }
+        .module h2,.module caption{
+            text-align: left;
+            background: #79aec8;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            /*text-transform: uppercase;*/
+            margin: 0;
+            padding: 8px;
+            font-weight: 400;
+        }
+        ul li {
+            list-style-type: square;
+            padding: 1px 0;
+        }
+
+        .object_tools a:link, .object-tools a:visited {
+            display: block;
+            float: left;
+            padding: 3px 12px;
+            background: #999;
+            font-weight: 400;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+
+        }
+        .object_tools a {
+            border-radius: 15px;
+            background-repeat: no-repeat;
+            background-position: right 7px center;
+            padding-right: 26px;
+        }
+
+        input[type="submit"] {
+            border: 1px solid #ccc;
+            padding: 2px 10px;
+            margin: 0;
+            vertical-align: middle;
+            background: #fff;
+            box-shadow: 0 -15px 20px -10px rgba(0, 0, 0, 0.15) inset;
+            cursor: pointer;
+            color: #333;
+        }
+        #toolbar form input {
+            border-radius: 4px;
+            font-size: 14px;
+            padding: 5px;
+            color: #333;
+        }
+        #result_list td,th input{
+
+        }
+        .select_list h2{
+            margin: 0;
+            padding: 8px;
+            font-weight: 400;
+            font-size: 13px;
+            text-align: left;
+            border: 1px solid #ccc;
+            border-radius: 4px 4px 0 0;
+            background: #f8f8f8;
+            color: #666;
+
+        }
+
+        .form_row input{
+            margin-left: 20px;
+        }
+
+
+    </style>
+    <style type="text/css" rel="stylesheet">
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+            color: #333;
+            background: #fff;
+        }
+        html,body{
+            height: 100%;
+        }
+        div{
+            display: block;
+        }
+        a{
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #header {width: auto;height: 8%;padding: 10px 40px;background: #417690;line-height: 40px;color: #ffc;overflow: hidden;float: top}
+        #header a:link, #header a:visited {color: #fff;}
+        #brand{
+            float: left;
+        }
+        #brand h1 {padding: 0;margin: 0 20px 0 0;font-weight: 300;font-size: 24px;color: #f5dd5d;}
+        #brand h1 a:link, #brand h1 a:visited{color: #f5dd5d;}
+
+    </style>
+    <style type="text/css" rel="stylesheet">
+        table
+        {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+        table td, table th
+        {
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 20px;
+            text-align: center;
+            padding-bottom: 3px;
+        }
+        table thead th
+        {
+            background-color: #CCE8EB;
+            width: 200px;
+            text-align: center
+        }
+        table tr:nth-child(odd)
+        {
+            background: #fff;
+        }
+        table tr:nth-child(even)
+        {
+            background: #F5FAFA;
+        }
+    </style>
+
+</head>
+<body>
+<!--头部-->
+<div id="header">
+    <div id="brand">
+        <a href="/admin/toIndex"><h1>超市后台管理系统</h1></a>
+    </div>
+</div>
+
+<!---导航-->
+<div class="breadcrumbs">
+    <ul style="margin-left: 2px;padding: 0px">
+        <li style="list-style-type: none">
+            <span style="font-size: 20px;color: yellow">用户管理</span>
+            <ul>
+                <a href="/admin/manage/customer/powerChange"><li style="list-style-type: none">用户权限管理</li></a>
+                <a href="/admin/manage/customer/del"><li style="list-style-type: none;color: black">用户账号管理</li></a>
+            </ul>
+        </li>
+        <li style="list-style-type: none">
+            <span style="font-size: 20px;color: yellow">商品分类</span>
+            <ul>
+                <a href="/admin/manage/commodity/type/add"><li style="list-style-type: none">增加商品分类</li></a>
+                <a href="/admin/manage/commodity/type/"><li style="list-style-type: none">商品分类概览</li></a>
+            </ul>
+        </li>
+        <li style="list-style-type: none">
+            <span style="font-size: 20px;color: yellow">商品管理</span>
+            <ul>
+                <a href="/admin/manage/commodity/add"><li style="list-style-type: none">增加商品</li></a>
+                <a href="/admin/manage/commodity/"><li style="list-style-type: none">商品概览</li></a>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<div id="content">
+    <table  style="margin-top: 35px">
+        <thead>
+        <tr>
+            <th>序号</th><th>用户名</th><th>是否会员</th><th>操    作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer,customerStat:${customers}">
+            <td th:text="${customerStat.count}"></td>
+            <td th:text="${customer.username}"></td>
+            <td th:text="${customer.getIsVip()}?'会员':'普通用户'"></td>
+            <td>
+                <a th:href="${'/admin/manage/customer/delete?id='+customer.id}">
+                    <button style="width: 100px;height: 25px;background-color: red">删除用户</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
