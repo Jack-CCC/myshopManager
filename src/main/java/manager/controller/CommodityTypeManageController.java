@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 商品种类后台管理，包括新增，删除，总览
- * 默认分类是已经内定好的，不需要修改//后期可改进，增加修改接口，但是没有太大必要
+ * //后期可改进，增加修改接口，但是没有太大必要
  */
 @Controller
 @RequestMapping("/admin/manage/commodity/type")
